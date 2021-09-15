@@ -1,10 +1,15 @@
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageOps
 import math
 
-image = Image.open('abc.png')
-image = image.filter(ImageFilter.FIND_EDGES)
+image = Image.open('bakery.png')
+
 image = image.convert("1");
+
+size = 1000, 500
+image = image.resize(size, Image.ANTIALIAS)
+image = image.filter(ImageFilter.FIND_EDGES)
 image.save('output.png')
+image = ImageOps.flip(image)
 width, height = image.size
 
 print(height)
@@ -40,5 +45,3 @@ for q in range(num_pixels):
       
  
     
-    
-
